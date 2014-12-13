@@ -1,0 +1,11 @@
+app/code/community/Storm/ElasticSearch      app/code/community/Storm/ElasticSearch
+app/etc/modules/Storm_ElasticSearch.xml     app/etc/modules/Storm_ElasticSearch.xml
+lib/Elasticsearch                           lib/Elasticsearch
+lib/Guzzle/Common                           lib/Guzzle/Common
+lib/Guzzle/Http                             lib/Guzzle/Http
+lib/Guzzle/Parser                           lib/Guzzle/Parser
+lib/Guzzle/Stream                           lib/Guzzle/Stream
+lib/Monolog                                 lib/Monolog
+lib/Pimple                                  lib/Pimple
+lib/Psr/Log                                 lib/Psr/Log
+lib/Symfony/Component/EventDispatcher       lib/Symfony/Component/EventDispatcher

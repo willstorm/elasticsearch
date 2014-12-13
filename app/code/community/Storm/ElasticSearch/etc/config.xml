@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Storm_ElasticSearch>
+            <version>1.0.0</version>
+        </Storm_ElasticSearch>
+    </modules>
+    <global>
+        <models>
+            <elasticsearch>
+                <class>Storm_ElasticSearch_Model</class>
+            </elasticsearch>
+        </models>
+        <helpers>
+            <elasticsearch>
+                <class>Storm_ElasticSearch_Helper</class>
+            </elasticsearch>
+        </helpers>
+        <events>
+            <controller_front_init_before>
+                <observers>
+                    <elasticsearch_autoloader>
+                        <class>elasticsearch/autoloader</class>
+                        <method>addAutoloader</method>
+                    </elasticsearch_autoloader>
+                </observers>
+            </controller_front_init_before>
+        </events>
+    </global>
+</config>
