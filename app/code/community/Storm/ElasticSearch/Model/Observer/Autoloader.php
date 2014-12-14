@@ -1,5 +1,5 @@
 <?php
-class Storm_ElasticSearch_Model_Autoloader
+class Storm_ElasticSearch_Model_Observer_Autoloader
 {
     protected $_registered = false;
 

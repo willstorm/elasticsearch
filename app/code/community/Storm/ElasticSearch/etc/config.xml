@@ -20,11 +20,22 @@
             <controller_front_init_before>
                 <observers>
                     <elasticsearch_autoloader>
-                        <class>elasticsearch/autoloader</class>
+                        <class>elasticsearch/observer_autoloader</class>
                         <method>addAutoloader</method>
                     </elasticsearch_autoloader>
                 </observers>
             </controller_front_init_before>
         </events>
     </global>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <elasticsearch after="Mage_Adminhtml">Storm_ElasticSearch</elasticsearch>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
 </config>
