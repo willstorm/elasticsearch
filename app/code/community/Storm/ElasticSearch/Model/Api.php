@@ -19,6 +19,54 @@ class Storm_ElasticSearch_Model_Api
     }
 
     /**
+     * Perform a mapping for specific types
+     *
+     * @param string $type
+     * @param array $fields
+     * @return bool
+     * @throws Exception
+     */
+    public function map($type, array $fields)
+    {
+        $url = $this->_getBaseRequestUrl(array(
+            'resource' => '_mapping',
+            'type'     => $type
+        ));
+
+        if(!is_array($fields)) {
+            throw new Exception('Fields must be an array');
+        }
+
+        foreach($fields as $field => $mapping) {
+            if(!$mapping['type']) {
+                throw new Exception($field . ' must have a type.');
+            }
+        }
+
+        $map = array(
+            $type => array(
+                'properties' => $fields
+            )
+        );
+
+        if($result = $this->request($url, $map, Zend_Http_Client::PUT)) {
+            return $result['acknowledged'];
+        }
+
+        return false;
+    }
+
+    /**
+     * Optimize indices
+     *
+     * @return array
+     */
+    public function optimize()
+    {
+        return $this->request('_optimize');
+    }
+
+    /**
      * Add a document
      *
      * @param string $type
@@ -118,13 +166,17 @@ class Storm_ElasticSearch_Model_Api
             $client->setMethod($method)
                    ->setRawData(Zend_Json::encode($params), 'application/json');
 
-            if(!$response = $client->request()->getBody()) {
-                throw new Exception('');
+            if(!$response = Zend_Json::decode($client->request()->getBody())) {
+                throw new Exception('An error ocurred to request elastic search server.');
             }
 
-            return Zend_Json::decode($response);
-        } catch(Exception $e) {
+            if(isset($response['error'])) {
+                throw new Exception($response['error']);
+            }
 
+            return $response;
+        } catch(Exception $e) {
+            Mage::helper('elasticsearch')->log($e->getMessage());
             return false;
         }
     }
