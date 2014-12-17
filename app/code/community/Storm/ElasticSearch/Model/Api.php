@@ -1,11 +1,11 @@
 <?php
 class Storm_ElasticSearch_Model_Api
 {
-    const INDEX         = 'magento';
+    const INDEX = 'magento';
 
-    const TYPE_PRODUCT  = 'product';
+    const TYPE_PRODUCT = 'product';
     const TYPE_CATEGORY = 'category';
-    const TYPE_PAGE     = 'page';
+    const TYPE_PAGE = 'page';
 
     protected $_config;
 

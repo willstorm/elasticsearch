@@ -10,12 +10,18 @@
             <elasticsearch>
                 <class>Storm_ElasticSearch_Model</class>
             </elasticsearch>
+            <adminhtml>
+                <rewrite>
+                    <system_config_source_catalog_search_type>Storm_ElasticSearch_Model_Adminhtml_System_Config_Source_Catalog_Search_Type</system_config_source_catalog_search_type>
+                </rewrite>
+            </adminhtml>
         </models>
         <helpers>
             <elasticsearch>
                 <class>Storm_ElasticSearch_Helper</class>
             </elasticsearch>
         </helpers>
+        <!--
         <events>
             <controller_front_init_before>
                 <observers>
@@ -26,6 +32,7 @@
                 </observers>
             </controller_front_init_before>
         </events>
+        -->
     </global>
     <admin>
         <routers>
@@ -38,4 +45,23 @@
             </adminhtml>
         </routers>
     </admin>
+    <adminhtml>
+        <translate>
+            <modules>
+                <Storm_ElasticSearch>
+                    <files>
+                        <default>Storm_ElasticSearch.csv</default>
+                    </files>
+                </Storm_ElasticSearch>
+            </modules>
+        </translate>
+    </adminhtml>
+    <default>
+        <catalog>
+            <search>
+                <host>localhost</host>
+                <port>9200</port>
+            </search>
+        </catalog>
+    </default>
 </config>

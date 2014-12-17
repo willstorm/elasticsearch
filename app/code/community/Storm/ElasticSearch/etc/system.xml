@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <catalog>
+            <groups>
+                <search translate="label" module="elasticsearch">
+                    <fields>
+                        <host translate="label">
+                            <label>Server Address</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>21</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><search_type>4</search_type></depends>
+                        </host>
+                        <port translate="label">
+                            <label>Server Port</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>22</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><search_type>4</search_type></depends>
+                        </port>
+                    </fields>
+                </search>
+            </groups>
+        </catalog>
+    </sections>
+</config>
