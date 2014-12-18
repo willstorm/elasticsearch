@@ -9,12 +9,18 @@
         <models>
             <elasticsearch>
                 <class>Storm_ElasticSearch_Model</class>
+                <resourceModel>elasticsearch_resource</resourceModel>
             </elasticsearch>
+            <elasticsearch_resource>
+                <class>Storm_ElasticSearch_Model_Resource</class>
+            </elasticsearch_resource>
+            <!--
             <adminhtml>
                 <rewrite>
                     <system_config_source_catalog_search_type>Storm_ElasticSearch_Model_Adminhtml_System_Config_Source_Catalog_Search_Type</system_config_source_catalog_search_type>
                 </rewrite>
             </adminhtml>
+            -->
         </models>
         <helpers>
             <elasticsearch>
