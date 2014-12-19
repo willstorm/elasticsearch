@@ -74,6 +74,16 @@ class Storm_ElasticSearch_Model_Resource_Engine extends Mage_Core_Model_Resource
     }
 
     /**
+     * @param $storeId
+     * @param $query
+     * @return array
+     */
+    public function search($storeId, $query)
+    {
+        return $this->_getApi()->search(Storm_ElasticSearch_Model_Api::TYPE_PRODUCT, $query, $storeId);
+    }
+
+    /**
      * Retrieve allowed visibility values for current engine
      *
      * @return array
@@ -81,6 +91,16 @@ class Storm_ElasticSearch_Model_Resource_Engine extends Mage_Core_Model_Resource
     public function getAllowedVisibility()
     {
         return Mage::getSingleton('catalog/product_visibility')->getVisibleInSearchIds();
+    }
+
+    /**
+     * Retrieve fulltext search result data collection
+     *
+     * @return Mage_CatalogSearch_Model_Resource_Fulltext_Collection
+     */
+    public function getResultCollection()
+    {
+        return Mage::getResourceModel('elasticsearch/result_collection');
     }
 
     /**

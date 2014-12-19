@@ -66,6 +66,44 @@ class Storm_ElasticSearch_Model_Api
         return $this->request('_optimize');
     }
 
+    public function search($type, $query, $storeId = null)
+    {
+        if(is_null($storeId)) {
+            $storeId = Mage::app()->getStore()->getId();
+        }
+
+        $url = $this->_getBaseRequestUrl(array(
+            'type'     => $type,
+            'resource' => '_search'
+        ));
+
+        $params = array(
+            'query' => array(
+                'filtered' => array(
+                    'query' => array(
+                        'match' => array(
+                            '_all' => $query
+                        )
+                    ),
+                    'filter' => array(
+                        'term' => array(
+                            'store_id' => $storeId
+                        )
+                    )
+                )
+            )
+        );
+
+        if($result = $this->request($url, $params)) {
+            return array(
+                'total' => $result['hits']['total'],
+                'items' => $result['hits']['hits'],
+            );
+        }
+
+        return false;
+    }
+
     /**
      * Add a document
      *

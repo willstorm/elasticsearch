@@ -14,31 +14,17 @@
             <elasticsearch_resource>
                 <class>Storm_ElasticSearch_Model_Resource</class>
             </elasticsearch_resource>
-            <!--
-            <adminhtml>
+            <catalogsearch>
                 <rewrite>
-                    <system_config_source_catalog_search_type>Storm_ElasticSearch_Model_Adminhtml_System_Config_Source_Catalog_Search_Type</system_config_source_catalog_search_type>
+                    <layer>Storm_ElasticSearch_Model_CatalogSearch_Layer</layer>
                 </rewrite>
-            </adminhtml>
-            -->
+            </catalogsearch>
         </models>
         <helpers>
             <elasticsearch>
                 <class>Storm_ElasticSearch_Helper</class>
             </elasticsearch>
         </helpers>
-        <!--
-        <events>
-            <controller_front_init_before>
-                <observers>
-                    <elasticsearch_autoloader>
-                        <class>elasticsearch/observer_autoloader</class>
-                        <method>addAutoloader</method>
-                    </elasticsearch_autoloader>
-                </observers>
-            </controller_front_init_before>
-        </events>
-        -->
     </global>
     <admin>
         <routers>
