@@ -6,9 +6,19 @@ class Storm_ElasticSearch_Helper_Config extends Mage_Core_Helper_Abstract
      */
     public function getConfig()
     {
-        // @TODO mudar as configurações para serem feitas através do aadmin
         return array(
-            'host' => 'http://localhost:9200'
+            'host' => $this->getAddress()
+        );
+    }
+
+    /**
+     * @return string
+     */
+    public function getAddress()
+    {
+        return sprintf('http://%s:%s',
+            Mage::getStoreConfig('catalog/search/host'),
+            Mage::getStoreConfig('catalog/search/port')
         );
     }
 }

@@ -115,15 +115,24 @@ class Storm_ElasticSearch_Model_Api
      * @param null|int $id
      * @return array
      */
-    public function delete($type = null, $id = null)
+    public function delete($type = null, array $filters = array())
     {
-        $url = $this->_getBaseRequestUrl(array(
-            'type' => $type,
-            'id'   => $id
-        ));
+        $url = '';
+        if($type) {
+            $url = $this->_getBaseRequestUrl(array(
+                'type'     => $type,
+                'resource' => '_query'
+            ));
+        }
 
-        if($result = $this->request($url, array(), Zend_Http_Client::DELETE)) {
-            return $result['found'];
+        $params = array(
+            'query' => array(
+                'term' => $filters
+            )
+        );
+
+        if($result = $this->request($url, $params, Zend_Http_Client::DELETE)) {
+            return $result;
         }
 
         return false;
