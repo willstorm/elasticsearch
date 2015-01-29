@@ -6,6 +6,11 @@
         </Storm_ElasticSearch>
     </modules>
     <global>
+        <blocks>
+            <elasticsearch>
+                <class>Storm_ElasticSearch_Block</class>
+            </elasticsearch>
+        </blocks>
         <models>
             <elasticsearch>
                 <class>Storm_ElasticSearch_Model</class>

@@ -205,7 +205,7 @@ class Storm_ElasticSearch_Model_Api
         try {
             $url = $this->_getBaseRequestUrl(array(
                 'host'  => $this->_config['host'],
-                'index' => $params['_index'] !== false ? self::INDEX : null,
+                'index' => !isset($params['_index']) || (isset($params['_index']) && $params['_index'] !== false) ? self::INDEX : null,
                 'url'   => $url
             ));
 
@@ -240,6 +240,7 @@ class Storm_ElasticSearch_Model_Api
             $params = array($params);
         }
 
+        $i = 0;
         $url = '';
         foreach($params as $param) {
             if(empty($param)) {

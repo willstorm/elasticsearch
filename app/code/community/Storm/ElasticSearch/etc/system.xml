@@ -20,21 +20,30 @@
                         <host translate="label">
                             <label>Server Address</label>
                             <frontend_type>text</frontend_type>
-                            <sort_order>21</sort_order>
+                            <sort_order>1</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                            <depends><engine>2</engine></depends>
+                            <depends><engine><![CDATA[elasticsearch/engine]]></engine></depends>
                         </host>
                         <port translate="label">
                             <label>Server Port</label>
                             <frontend_type>text</frontend_type>
-                            <sort_order>22</sort_order>
+                            <sort_order>2</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                            <depends><engine>2</engine></depends>
+                            <depends><engine><![CDATA[elasticsearch/engine]]></engine></depends>
                         </port>
+                        <test translate="label">
+                            <label>Test</label>
+                            <frontend_type>button</frontend_type>
+                            <frontend_model>elasticsearch/adminhtml_system_config_form_button</frontend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </test>
                     </fields>
                 </search>
             </groups>
